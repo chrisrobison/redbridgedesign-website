@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Red Bridge Design | As-Built Drawings & Existing Conditions Surveys</title>
+  <meta name="description" content="Expert as-built drawings and existing conditions surveys for architects, contractors, and property owners. Field-verified, permit-ready, and delivered fast." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ======= NAVIGATION ======= -->
+  <header class="site-header" id="site-header">
+    <nav class="nav container">
+      <a href="#hero" class="nav__logo">
+        <span class="nav__logo-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="4" y="28" width="32" height="3" rx="1.5" fill="currentColor"/>
+            <path d="M20 6 L36 28 H4 Z" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+            <line x1="20" y1="6" x2="20" y2="28" stroke="currentColor" stroke-width="2" stroke-dasharray="3 3"/>
+            <line x1="12" y1="28" x2="14" y2="22" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="28" y1="28" x2="26" y2="22" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </span>
+        <span class="nav__logo-text">Red Bridge<span>Design</span></span>
+      </a>
+
+      <ul class="nav__links" id="nav-links">
+        <li><a href="#services" class="nav__link">Services</a></li>
+        <li><a href="#portfolio" class="nav__link">Portfolio</a></li>
+        <li><a href="#drawings" class="nav__link">Drawings</a></li>
+        <li><a href="#about" class="nav__link">About</a></li>
+        <li><a href="#process" class="nav__link">Process</a></li>
+        <li><a href="#testimonials" class="nav__link">Testimonials</a></li>
+        <li><a href="#contact" class="nav__link nav__link--cta">Get a Quote</a></li>
+      </ul>
+
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ======= HERO ======= -->
+    <section class="hero" id="hero">
+
+      <!-- Carousel background — z-index 0, lowest layer -->
+      <div class="hero__carousel-bg" id="hero-carousel-bg" aria-hidden="true">
+        <div class="hero__slide hero__slide--visible" id="hero-slide-a">
+          <div class="hero__slide-inner" id="hero-inner-a">
+            <canvas id="hero-canvas-a" class="hero__canvas"></canvas>
+          </div>
+        </div>
+        <div class="hero__slide hero__slide--hidden" id="hero-slide-b">
+          <div class="hero__slide-inner" id="hero-inner-b">
+            <canvas id="hero-canvas-b" class="hero__canvas"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__bg-grid" aria-hidden="true"></div>
+      <div class="hero__blueprint" aria-hidden="true">
+        <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <!-- Floor plan outline -->
+          <rect x="100" y="60" width="600" height="380" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" fill="none"/>
+          <!-- Interior walls -->
+          <line x1="100" y1="220" x2="380" y2="220" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+          <line x1="380" y1="60" x2="380" y2="340" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+          <line x1="380" y1="340" x2="700" y2="340" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+          <line x1="560" y1="60" x2="560" y2="220" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+          <line x1="100" y1="340" x2="280" y2="340" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+          <!-- Dimension lines -->
+          <line x1="100" y1="30" x2="700" y2="30" stroke="rgba(255,255,255,0.07)" stroke-width="0.8" stroke-dasharray="4 4"/>
+          <line x1="730" y1="60" x2="730" y2="440" stroke="rgba(255,255,255,0.07)" stroke-width="0.8" stroke-dasharray="4 4"/>
+          <!-- Door arcs -->
+          <path d="M 280 340 A 40 40 0 0 1 280 300" stroke="rgba(255,255,255,0.07)" stroke-width="0.8" fill="none"/>
+          <path d="M 380 220 A 40 40 0 0 0 340 220" stroke="rgba(255,255,255,0.07)" stroke-width="0.8" fill="none"/>
+          <!-- Cross marks -->
+          <line x1="240" y1="140" x2="260" y2="140" stroke="rgba(255,255,255,0.05)" stroke-width="0.8"/>
+          <line x1="250" y1="130" x2="250" y2="150" stroke="rgba(255,255,255,0.05)" stroke-width="0.8"/>
+          <line x1="500" y1="280" x2="520" y2="280" stroke="rgba(255,255,255,0.05)" stroke-width="0.8"/>
+          <line x1="510" y1="270" x2="510" y2="290" stroke="rgba(255,255,255,0.05)" stroke-width="0.8"/>
+        </svg>
+      </div>
+
+      <div class="hero__content container">
+        <p class="hero__eyebrow reveal">Field-Verified · Permit-Ready · Delivered Fast</p>
+        <h1 class="hero__title reveal reveal--delay-1">
+          As-Built Drawings<br/>
+          <em>You Can Build From</em>
+        </h1>
+        <p class="hero__subtitle reveal reveal--delay-2">
+          We survey, measure, and draft precise as-built drawings for renovations, permits, and real estate due diligence — serving architects, contractors, and property owners across the region.
+        </p>
+        <div class="hero__actions reveal reveal--delay-3">
+          <a href="#contact" class="btn btn--primary">Request a Free Quote</a>
+          <a href="#portfolio" class="btn btn--ghost">View Our Work</a>
+        </div>
+        <div class="hero__stats reveal reveal--delay-4">
+          <div class="stat">
+            <span class="stat__number" data-target="8500">0</span><span class="stat__suffix">+</span>
+            <p class="stat__label">Projects Completed</p>
+          </div>
+          <div class="stat__divider" aria-hidden="true"></div>
+          <div class="stat">
+            <span class="stat__number" data-target="15">0</span><span class="stat__suffix"> yrs</span>
+            <p class="stat__label">Industry Experience</p>
+          </div>
+          <div class="stat__divider" aria-hidden="true"></div>
+          <div class="stat">
+            <span class="stat__number" data-target="98">0</span><span class="stat__suffix">%</span>
+            <p class="stat__label">Client Satisfaction</p>
+          </div>
+        </div>
+      </div>
+
+      <a href="#services" class="hero__scroll" aria-label="Scroll down">
+        <span class="hero__scroll-dot"></span>
+      </a>
+    </section>
+
+    <!-- ======= SERVICES ======= -->
+    <section class="services section" id="services">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">What We Do</p>
+          <h2 class="section-title">As-Built Drawings &<br/>Architectural Documentation</h2>
+          <p class="section-subtitle">Specialists in field-verified existing conditions — plus the full suite of drafting services to take your project from site survey to permit-ready set.</p>
+        </div>
+
+        <div class="services__grid">
+
+          <article class="service-card service-card--accent reveal">
+            <div class="service-card__icon">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="6" y="6" width="36" height="36" rx="2" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                <line x1="6" y1="18" x2="42" y2="18" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="6" y1="30" x2="42" y2="30" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="18" y1="6" x2="18" y2="42" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="30" y1="6" x2="30" y2="42" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="24" cy="24" r="4" fill="currentColor" opacity="0.5"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">As-Built Drawings</h3>
+            <p class="service-card__desc">Our core specialty. We visit your site, take precise measurements, and produce fully drafted, field-verified as-built drawings — accurate records of the building exactly as it stands today.</p>
+            <ul class="service-card__list">
+              <li>Residential &amp; Commercial As-Builts</li>
+              <li>Existing Conditions Floor Plans</li>
+              <li>Elevations, Sections &amp; Details</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal reveal--delay-1">
+            <div class="service-card__icon">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M10 38 L10 16 L24 8 L38 16 L38 38 Z" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+                <rect x="19" y="26" width="10" height="12" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <rect x="14" y="20" width="8" height="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <rect x="26" y="20" width="8" height="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Permit Drawing Sets</h3>
+            <p class="service-card__desc">From as-built survey to approved permit set — we produce complete, jurisdiction-specific drawing packages ready for building department submission, built on your existing conditions drawings.</p>
+            <ul class="service-card__list">
+              <li>Renovation &amp; Addition Permit Sets</li>
+              <li>Zoning &amp; Code Compliance</li>
+              <li>Title Sheet &amp; Cover Page</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal reveal--delay-2">
+            <div class="service-card__icon">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M10 30 Q 24 10 38 30" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                <line x1="10" y1="38" x2="38" y2="38" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <line x1="10" y1="30" x2="10" y2="38" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <line x1="38" y1="30" x2="38" y2="38" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="24" cy="22" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Historic &amp; Renovation</h3>
+            <p class="service-card__desc">Precise measured drawings of historic structures and renovation projects where existing conditions must be captured with exceptional care and detail before any new work begins.</p>
+            <ul class="service-card__list">
+              <li>Historic Measured Drawings</li>
+              <li>Pre-Renovation Surveys</li>
+              <li>Adaptive Reuse Documentation</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal reveal--delay-1">
+            <div class="service-card__icon">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="8" y="38" width="32" height="3" rx="1.5" fill="currentColor" opacity="0.3"/>
+                <path d="M24 8 L40 38 H8 Z" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+                <line x1="24" y1="8" x2="24" y2="38" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Architectural Drafting</h3>
+            <p class="service-card__desc">CAD and BIM drafting for new construction, renovations, and additions — often paired with our as-built survey to ensure every new drawing is grounded in verified existing conditions.</p>
+            <ul class="service-card__list">
+              <li>Floor Plans &amp; Reflected Ceiling Plans</li>
+              <li>Exterior &amp; Interior Elevations</li>
+              <li>Building Sections &amp; Details</li>
+              <li>Site Plans &amp; Plot Plans</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal reveal--delay-2">
+            <div class="service-card__icon">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M8 40 L8 14 L18 14 L18 8 L30 8 L30 14 L40 14 L40 40 Z" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+                <line x1="16" y1="40" x2="16" y2="28" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="32" y1="40" x2="32" y2="28" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="16" y1="28" x2="32" y2="28" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="20" y="18" width="8" height="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Commercial &amp; Multi-Family</h3>
+            <p class="service-card__desc">Large-scale as-built surveys and documentation for retail, office, hospitality, and multi-unit residential — coordinated across multiple floors and disciplines.</p>
+            <ul class="service-card__list">
+              <li>Tenant Improvement As-Builts</li>
+              <li>Multi-Family Unit Plans</li>
+              <li>ADA Compliance Documentation</li>
+              <li>Phased Construction Docs</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal reveal--delay-3">
+            <div class="service-card__icon">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                <path d="M24 8 L24 24 L32 32" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="24" cy="24" r="2" fill="currentColor"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">3D Modeling &amp; BIM</h3>
+            <p class="service-card__desc">Revit BIM models built from your as-built survey data — giving architects, contractors, and owners a rich spatial model to design and coordinate from with confidence.</p>
+            <ul class="service-card__list">
+              <li>Revit As-Built BIM Models</li>
+              <li>Clash Detection Support</li>
+              <li>Scan-to-BIM Coordination</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= PORTFOLIO ======= -->
+    <section class="portfolio section" id="portfolio">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">Our Work</p>
+          <h2 class="section-title">Selected Projects</h2>
+          <p class="section-subtitle">A sample of our as-built surveys, permit sets, and existing conditions documentation across residential and commercial projects.</p>
+        </div>
+
+        <div class="portfolio__filters reveal">
+          <button class="filter-btn filter-btn--active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="residential">Residential</button>
+          <button class="filter-btn" data-filter="commercial">Commercial</button>
+        </div>
+
+        <div class="portfolio__grid" id="portfolio-grid">
+
+          <article class="portfolio-item reveal reveal--delay-1" data-category="commercial as-built" data-pdf="assets/1618-1632 MASON STREET.pdf" data-pages="9" data-title="1618–1632 Mason Street">
+            <div class="portfolio-item__img">
+              <div class="portfolio-item__thumb">
+                <canvas class="portfolio-item__canvas"></canvas>
+                <div class="portfolio-item__thumb-loader">
+                  <div class="portfolio-item__spinner"></div>
+                </div>
+              </div>
+              <div class="portfolio-item__overlay">
+                <button class="portfolio-item__btn" aria-label="View drawings for 1618–1632 Mason Street">View Drawings</button>
+              </div>
+            </div>
+            <div class="portfolio-item__info">
+              <span class="portfolio-item__tag">As-Built · Commercial</span>
+              <h3 class="portfolio-item__title">1618–1632 Mason Street</h3>
+              <p class="portfolio-item__meta">9 sheets · Existing Conditions Survey</p>
+            </div>
+          </article>
+
+          <article class="portfolio-item reveal reveal--delay-2" data-category="residential as-built" data-pdf="assets/1839 MAGELLAN DRIVE.pdf" data-pages="10" data-title="1839 Magellan Drive">
+            <div class="portfolio-item__img">
+              <div class="portfolio-item__thumb">
+                <canvas class="portfolio-item__canvas"></canvas>
+                <div class="portfolio-item__thumb-loader">
+                  <div class="portfolio-item__spinner"></div>
+                </div>
+              </div>
+              <div class="portfolio-item__overlay">
+                <button class="portfolio-item__btn" aria-label="View drawings for 1839 Magellan Drive">View Drawings</button>
+              </div>
+            </div>
+            <div class="portfolio-item__info">
+              <span class="portfolio-item__tag">As-Built · Residential</span>
+              <h3 class="portfolio-item__title">1839 Magellan Drive</h3>
+              <p class="portfolio-item__meta">10 sheets · Existing Conditions Survey</p>
+            </div>
+          </article>
+
+          <article class="portfolio-item reveal" data-category="residential as-built" data-pdf="assets/27 SATURN STREET.pdf" data-pages="4" data-title="27 Saturn Street">
+            <div class="portfolio-item__img">
+              <div class="portfolio-item__thumb">
+                <canvas class="portfolio-item__canvas"></canvas>
+                <div class="portfolio-item__thumb-loader">
+                  <div class="portfolio-item__spinner"></div>
+                </div>
+              </div>
+              <div class="portfolio-item__overlay">
+                <button class="portfolio-item__btn" aria-label="View drawings for 27 Saturn Street">View Drawings</button>
+              </div>
+            </div>
+            <div class="portfolio-item__info">
+              <span class="portfolio-item__tag">As-Built · Residential</span>
+              <h3 class="portfolio-item__title">27 Saturn Street</h3>
+              <p class="portfolio-item__meta">4 sheets · Existing Conditions Survey</p>
+            </div>
+          </article>
+
+          <article class="portfolio-item reveal reveal--delay-1" data-category="residential as-built" data-pdf="assets/67 CAYUGA STREET.pdf" data-pages="7" data-title="67 Cayuga Street">
+            <div class="portfolio-item__img">
+              <div class="portfolio-item__thumb">
+                <canvas class="portfolio-item__canvas"></canvas>
+                <div class="portfolio-item__thumb-loader">
+                  <div class="portfolio-item__spinner"></div>
+                </div>
+              </div>
+              <div class="portfolio-item__overlay">
+                <button class="portfolio-item__btn" aria-label="View drawings for 67 Cayuga Street">View Drawings</button>
+              </div>
+            </div>
+            <div class="portfolio-item__info">
+              <span class="portfolio-item__tag">As-Built · Residential</span>
+              <h3 class="portfolio-item__title">67 Cayuga Street</h3>
+              <p class="portfolio-item__meta">7 sheets · Existing Conditions Survey</p>
+            </div>
+          </article>
+
+          <article class="portfolio-item reveal reveal--delay-2" data-category="residential as-built" data-pdf="assets/697 RHODE ISALND STREET.pdf" data-pages="7" data-title="697 Rhode Island Street">
+            <div class="portfolio-item__img">
+              <div class="portfolio-item__thumb">
+                <canvas class="portfolio-item__canvas"></canvas>
+                <div class="portfolio-item__thumb-loader">
+                  <div class="portfolio-item__spinner"></div>
+                </div>
+              </div>
+              <div class="portfolio-item__overlay">
+                <button class="portfolio-item__btn" aria-label="View drawings for 697 Rhode Island Street">View Drawings</button>
+              </div>
+            </div>
+            <div class="portfolio-item__info">
+              <span class="portfolio-item__tag">As-Built · Residential</span>
+              <h3 class="portfolio-item__title">697 Rhode Island Street</h3>
+              <p class="portfolio-item__meta">7 sheets · Existing Conditions Survey</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= PROMO VIDEO ======= -->
+    <section class="promo-video section">
+      <div class="container">
+        <video
+          src="assets/leica-promo.mp4"
+          autoplay
+          muted
+          loop
+          playsinline
+          style="width:100%;display:block;border-radius:8px;"
+        ></video>
+      </div>
+    </section>
+
+    <!-- ======= DRAWINGS CAROUSEL ======= -->
+    <!-- section class="drawings section" id="drawings">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">Real Deliverables</p>
+          <h2 class="section-title">Actual Drawings From<br/>Our Completed Projects</h2>
+          <p class="section-subtitle">Browse individual sheets straight from our finished PDF deliverables — as-builts, floor plans, elevations, and more from real client projects.</p>
+        </div>
+      </div>
+
+      <div class="drawings__carousel reveal reveal--delay-1">
+        <div class="drawings__stage" id="drawings-stage" tabindex="0" aria-label="Drawing carousel — use arrow keys to navigate">
+          <!-- Slide A (initially front/visible) ->
+          <div class="drawings__slide drawings__slide--center" id="drawings-slide-a">
+            <canvas id="drawings-canvas" class="drawings__canvas"></canvas>
+          </div>
+          <!-- Slide B (initially back/off-screen) ->
+          <div class="drawings__slide drawings__slide--right" id="drawings-slide-b" aria-hidden="true">
+            <canvas id="drawings-canvas-b" class="drawings__canvas"></canvas>
+          </div>
+          <div class="drawings__loader" id="drawings-loader" aria-hidden="true">
+            <div class="drawings__spinner"></div>
+            <p class="drawings__loading-text">Loading drawing…</p>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="drawings__caption">
+            <span class="drawings__project-label" id="drawings-project"></span>
+            <span class="drawings__counter" id="drawings-counter"></span>
+          </div>
+
+          <div class="drawings__controls">
+            <button class="drawings__nav" id="drawings-prev" aria-label="Previous drawing">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <div class="drawings__project-pills" id="drawings-pills"></div>
+            <button class="drawings__nav" id="drawings-next" aria-label="Next drawing">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+          -->
+      </div>
+    </section>
+
+    <!-- ======= ABOUT ======= -->
+    <section class="about section" id="about">
+      <div class="container">
+        <div class="about__grid">
+          <div class="about__visual reveal">
+            <div class="about__drawing-frame">
+              <svg viewBox="0 0 380 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect width="380" height="460" rx="4" fill="#f0f4f8"/>
+                <!-- Title block -->
+                <rect x="10" y="10" width="360" height="440" stroke="#2d4a6e" stroke-width="1.5" fill="none"/>
+                <rect x="10" y="390" width="360" height="60" stroke="#2d4a6e" stroke-width="1" fill="rgba(45,74,110,0.04)"/>
+                <line x1="10" y1="420" x2="370" y2="420" stroke="#2d4a6e" stroke-width="0.8"/>
+                <line x1="200" y1="390" x2="200" y2="450" stroke="#2d4a6e" stroke-width="0.8"/>
+                <text x="105" y="408" font-size="8" fill="#2d4a6e" text-anchor="middle" font-family="monospace">PROJECT: PINE ST RESIDENCE</text>
+                <text x="105" y="440" font-size="7" fill="#2d4a6e" text-anchor="middle" font-family="monospace">DRAFTLINE STUDIO</text>
+                <text x="285" y="408" font-size="7" fill="#2d4a6e" text-anchor="middle" font-family="monospace">DATE: 03.13.2026</text>
+                <text x="285" y="440" font-size="7" fill="#2d4a6e" text-anchor="middle" font-family="monospace">SCALE: 1/4" = 1'-0"</text>
+                <!-- Detailed floor plan -->
+                <rect x="25" y="25" width="330" height="355" stroke="#2d4a6e" stroke-width="2" fill="none"/>
+                <line x1="25" y1="205" x2="200" y2="205" stroke="#2d4a6e" stroke-width="1.5"/>
+                <line x1="200" y1="25" x2="200" y2="300" stroke="#2d4a6e" stroke-width="1.5"/>
+                <line x1="200" y1="300" x2="355" y2="300" stroke="#2d4a6e" stroke-width="1.5"/>
+                <line x1="100" y1="205" x2="100" y2="380" stroke="#2d4a6e" stroke-width="1.5"/>
+                <line x1="280" y1="25" x2="280" y2="205" stroke="#2d4a6e" stroke-width="1.5"/>
+                <!-- Door arcs -->
+                <path d="M 200 260 A 40 40 0 0 0 160 260" stroke="#2d4a6e" stroke-width="1" fill="none"/>
+                <path d="M 100 300 A 35 35 0 0 1 100 265" stroke="#2d4a6e" stroke-width="1" fill="none"/>
+                <!-- Window symbols -->
+                <rect x="55" y="25" width="30" height="5" fill="rgba(90,143,196,0.4)"/>
+                <rect x="155" y="25" width="30" height="5" fill="rgba(90,143,196,0.4)"/>
+                <rect x="215" y="25" width="40" height="5" fill="rgba(90,143,196,0.4)"/>
+                <rect x="355" y="80" width="5" height="30" fill="rgba(90,143,196,0.4)"/>
+                <rect x="355" y="160" width="5" height="30" fill="rgba(90,143,196,0.4)"/>
+                <!-- Room labels -->
+                <text x="112" y="120" font-size="9" fill="#2d4a6e" text-anchor="middle" font-family="monospace">LIVING ROOM</text>
+                <text x="112" y="132" font-size="7" fill="#5a8fc4" text-anchor="middle" font-family="monospace">18'-0" x 20'-0"</text>
+                <text x="277" y="120" font-size="9" fill="#2d4a6e" text-anchor="middle" font-family="monospace">MASTER BED</text>
+                <text x="277" y="132" font-size="7" fill="#5a8fc4" text-anchor="middle" font-family="monospace">14'-0" x 16'-0"</text>
+                <text x="112" y="290" font-size="9" fill="#2d4a6e" text-anchor="middle" font-family="monospace">KITCHEN</text>
+                <text x="62" y="340" font-size="8" fill="#2d4a6e" text-anchor="middle" font-family="monospace">BATH</text>
+                <text x="277" y="340" font-size="8" fill="#2d4a6e" text-anchor="middle" font-family="monospace">BED 2</text>
+                <!-- Dimension lines -->
+                <line x1="25" y1="15" x2="355" y2="15" stroke="#2d4a6e" stroke-width="0.6"/>
+                <text x="190" y="13" font-size="6" fill="#2d4a6e" text-anchor="middle" font-family="monospace">44'-0"</text>
+                <line x1="15" y1="25" x2="15" y2="380" stroke="#2d4a6e" stroke-width="0.6"/>
+                <text x="10" y="205" font-size="6" fill="#2d4a6e" text-anchor="middle" font-family="monospace" transform="rotate(-90,10,205)">37'-4"</text>
+              </svg>
+            </div>
+            <div class="about__badges">
+              <div class="about__badge reveal reveal--delay-1">
+                <strong>CAD</strong> AutoCAD 2025
+              </div>
+              <div class="about__badge reveal reveal--delay-2">
+                <strong>BIM</strong> Revit 2025
+              </div>
+              <div class="about__badge reveal reveal--delay-3">
+                <strong>3D</strong> SketchUp Pro
+              </div>
+            </div>
+          </div>
+
+          <div class="about__content">
+            <div class="section-header section-header--left reveal">
+              <p class="section-eyebrow">About Red Bridge Design</p>
+              <h2 class="section-title">As-Built Specialists<br/>Since 2011</h2>
+            </div>
+            <p class="about__body reveal reveal--delay-1">
+              Founded in 2011, Red Bridge Design has built its reputation on one thing: getting existing conditions right. We've completed over 8500 as-built surveys and drawing projects for architects, contractors, developers, and property owners across the region.
+            </p>
+            <p class="about__body reveal reveal--delay-2">
+              When a renovation hits an unexpected wall configuration, when a permit requires existing conditions drawings, or when a property sale needs accurate floor plans — clients call us. We show up, we measure, and we deliver drawings you can bet your project on.
+            </p>
+            <div class="about__features reveal reveal--delay-3">
+              <div class="about__feature">
+                <div class="about__feature-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div>
+                  <strong>Fast Turnaround</strong>
+                  <p>Standard 5–7 business days; rush 48-hour service available.</p>
+                </div>
+              </div>
+              <div class="about__feature">
+                <div class="about__feature-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div>
+                  <strong>Unlimited Revisions</strong>
+                  <p>We refine drawings until you're 100% satisfied — no extra charge.</p>
+                </div>
+              </div>
+              <div class="about__feature">
+                <div class="about__feature-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div>
+                  <strong>All File Formats</strong>
+                  <p>Delivery in DWG, RVT, PDF, and DXF — whatever your workflow needs.</p>
+                </div>
+              </div>
+              <div class="about__feature">
+                <div class="about__feature-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div>
+                  <strong>Fully Remote-Capable</strong>
+                  <p>We work with clients nationwide via cloud collaboration and virtual site surveys.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= PROCESS ======= -->
+    <section class="process section" id="process">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">How It Works</p>
+          <h2 class="section-title">From Site Visit to<br/>Finished As-Builts in Four Steps</h2>
+        </div>
+
+        <div class="process__steps">
+          <div class="process__step reveal">
+            <div class="process__step-number">01</div>
+            <div class="process__step-content">
+              <h3>Request a Quote</h3>
+              <p>Tell us your property address, approximate square footage, and what you need the drawings for — renovation, permit, sale, or facilities management. We'll respond within 4 hours with a fixed-fee proposal.</p>
+            </div>
+          </div>
+          <div class="process__connector" aria-hidden="true"></div>
+          <div class="process__step reveal reveal--delay-1">
+            <div class="process__step-number">02</div>
+            <div class="process__step-content">
+              <h3>We Measure Your Building</h3>
+              <p>Our team visits your site with laser measuring equipment and methodically records every wall, opening, ceiling height, and structural element. We can also work from your photos or laser scan data for remote projects.</p>
+            </div>
+          </div>
+          <div class="process__connector" aria-hidden="true"></div>
+          <div class="process__step reveal reveal--delay-2">
+            <div class="process__step-number">03</div>
+            <div class="process__step-content">
+              <h3>Draft, Review &amp; Refine</h3>
+              <p>We convert your field measurements into clean, scaled drawings and share a draft via our client portal. You mark up changes directly in the browser, and we incorporate every revision — typically within 24 hours.</p>
+            </div>
+          </div>
+          <div class="process__connector" aria-hidden="true"></div>
+          <div class="process__step reveal reveal--delay-3">
+            <div class="process__step-number">04</div>
+            <div class="process__step-content">
+              <h3>Receive Your As-Builts</h3>
+              <p>Final drawings are delivered as PDFs and native CAD/BIM files via secure download — permit-ready and built to your specifications. We retain your files for 3 years for easy future updates.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= TESTIMONIALS ======= -->
+    <section class="testimonials section" id="testimonials">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">Client Voices</p>
+          <h2 class="section-title">What Our Clients Say</h2>
+        </div>
+
+        <div class="testimonials__track" id="testimonials-track">
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote class="testimonial-card__quote">
+              "Red Bridge Design delivered a complete as-built set for our 8,000 SF commercial space in under a week. The drawings were incredibly accurate — the building department had zero comments. I've stopped going anywhere else for as-builts."
+            </blockquote>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar" aria-hidden="true">MR</div>
+              <div>
+                <strong>Marcus Reid</strong>
+                <span>Principal, Reid Development Group</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote class="testimonial-card__quote">
+              "We hired Red Bridge Design for a historic renovation and their measured drawings were exceptional — capturing every quirk of the 1920s building with the level of detail our preservation consultant required. Accuracy and detail are clearly their priority."
+            </blockquote>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar" aria-hidden="true">TW</div>
+              <div>
+                <strong>Thomas Walsh</strong>
+                <span>Owner, Walsh Heritage Properties</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote class="testimonial-card__quote">
+              "As an architect, I rely on Red Bridge Design for as-built surveys before every major renovation. Their field measurements are always spot-on and the drawings come back clean and permit-ready. They're a genuine extension of our office."
+            </blockquote>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar" aria-hidden="true">SL</div>
+              <div>
+                <strong>Sandra Liu, AIA</strong>
+                <span>Principal Architect, Liu+Park Studio</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote class="testimonial-card__quote">
+              "We needed as-builts fast for a tenant build-out and Red Bridge delivered in 3 days. The drawings were detailed enough that our contractor barely needed to visit the site before pricing the job. Outstanding service."
+            </blockquote>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar" aria-hidden="true">CJ</div>
+              <div>
+                <strong>Carmen Jiménez</strong>
+                <span>Project Manager, Clearview Construction</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonials__controls">
+          <button class="testimonial-nav" id="testimonial-prev" aria-label="Previous testimonial">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="testimonials__dots" id="testimonials-dots"></div>
+          <button class="testimonial-nav" id="testimonial-next" aria-label="Next testimonial">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= CONTACT ======= -->
+    <section class="contact section" id="contact">
+      <div class="container">
+        <div class="contact__grid">
+          <div class="contact__info reveal">
+            <div class="section-header section-header--left">
+              <p class="section-eyebrow">Get In Touch</p>
+              <h2 class="section-title">Get Your As-Built<br/>Drawings Started</h2>
+            </div>
+            <p class="contact__desc">Tell us about your property and what you need the drawings for. We'll get back to you within 4 business hours with a clear, fixed-fee quote. No obligation, no guesswork.</p>
+
+            <div class="contact__details">
+              <div class="contact__detail">
+                <div class="contact__detail-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 13.9a19.79 19.79 0 01-3.07-8.67A2 2 0 012.61 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 10.6a16 16 0 006.29 6.29l.96-.96a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 18.92z"/></svg>
+                </div>
+                <div>
+                  <strong>Phone</strong>
+                  <a href="tel:4155312647">415-531-2647</a>
+                </div>
+              </div>
+              <div class="contact__detail">
+                <div class="contact__detail-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div>
+                  <strong>Email</strong>
+                  <a href="mailto:info@redbridgedesign.com">info@redbridgedesign.com</a>
+                </div>
+              </div>
+              <div class="contact__detail">
+                <div class="contact__detail-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 010 16c-4.418 0-8-3.582-8-8s3.582-8 8-8z"/><path d="M12 18v4"/></svg>
+                </div>
+                <div>
+                  <strong>Office Hours</strong>
+                  <span>Mon – Fri, 8am – 6pm PST</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form class="contact__form reveal reveal--delay-1" id="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name <span aria-hidden="true">*</span></label>
+                <input type="text" id="name" name="name" placeholder="Jane Smith" required autocomplete="name" />
+                <span class="form-error" id="name-error" role="alert"></span>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address <span aria-hidden="true">*</span></label>
+                <input type="email" id="email" name="email" placeholder="jane@company.com" required autocomplete="email" />
+                <span class="form-error" id="email-error" role="alert"></span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" autocomplete="tel" />
+              </div>
+              <div class="form-group">
+                <label for="service">Service Needed <span aria-hidden="true">*</span></label>
+                <select id="service" name="service" required>
+                  <option value="">Select a service…</option>
+                  <option value="architectural-drafting">Architectural Drafting</option>
+                  <option value="as-built">As-Built Drawings</option>
+                  <option value="permit-set">Permit Drawing Set</option>
+                  <option value="3d-modeling">3D Modeling / BIM</option>
+                  <option value="commercial">Commercial / Multi-Family</option>
+                  <option value="historic">Historic / Renovation</option>
+                  <option value="other">Other</option>
+                </select>
+                <span class="form-error" id="service-error" role="alert"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="project-size">Project Size / Scope</label>
+              <input type="text" id="project-size" name="project-size" placeholder="e.g. 2,400 SF single family addition" />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Project Description <span aria-hidden="true">*</span></label>
+              <textarea id="message" name="message" rows="5" placeholder="Tell us about your property — building type, approximate size, what you need the as-builts for (renovation, permit, sale, etc.), and your timeline…" required></textarea>
+              <span class="form-error" id="message-error" role="alert"></span>
+            </div>
+
+            <div class="form-group form-group--checkbox">
+              <label class="checkbox-label">
+                <input type="checkbox" name="rush" id="rush" />
+                <span class="checkbox-custom" aria-hidden="true"></span>
+                I need rush turnaround (48–72 hours)
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--full" id="submit-btn">
+              <span class="btn__text">Send My Request</span>
+              <span class="btn__loading" aria-hidden="true"></span>
+            </button>
+
+            <div class="form-success" id="form-success" role="status" aria-live="polite">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="20 6 9 17 4 12"/></svg>
+              <strong>Request received!</strong> We'll be in touch within 4 business hours.
+            </div>
+
+            <div class="form-send-error" id="form-send-error" role="alert" aria-live="polite">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <strong>Something went wrong.</strong> Please email us directly at <a href="mailto:info@redbridgedesign.com">info@redbridgedesign.com</a>.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="#hero" class="nav__logo">
+            <span class="nav__logo-icon">
+              <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="4" y="28" width="32" height="3" rx="1.5" fill="currentColor"/>
+                <path d="M20 6 L36 28 H4 Z" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+                <line x1="20" y1="6" x2="20" y2="28" stroke="currentColor" stroke-width="2" stroke-dasharray="3 3"/>
+              </svg>
+            </span>
+            <span class="nav__logo-text">Red Bridge<span>Design</span></span>
+          </a>
+          <p class="footer__tagline">Specialist as-built drawings and architectural documentation for architects, contractors, and property owners since 2011.</p>
+        </div>
+
+        <div class="footer__col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Architectural Drafting</a></li>
+            <li><a href="#services">As-Built Drawings</a></li>
+            <li><a href="#services">Permit Sets</a></li>
+            <li><a href="#services">3D Modeling</a></li>
+            <li><a href="#services">Commercial Projects</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#process">Our Process</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="mailto:info@redbridgedesign.com">info@redbridgedesign.com</a></li>
+            <li><a href="tel:4155312647">415-531-2647</a></li>
+          </ul>
+          <div class="footer__social">
+            <a href="#" aria-label="LinkedIn" class="footer__social-link">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram" class="footer__social-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            </a>
+            <a href="#" aria-label="Houzz" class="footer__social-link">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L3 9v13h7v-7h4v7h7V9z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>&copy; 2026 Red Bridge Design. All rights reserved.</p>
+        <div class="footer__bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======= LIGHTBOX ======= -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Project details" hidden>
+    <button class="lightbox__close" id="lightbox-close" aria-label="Close">&times;</button>
+    <div class="lightbox__content" id="lightbox-content"></div>
+  </div>
+
+  <!-- ======= BACK TO TOP ======= -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="script.js"></script>
+</body>
+</html>
