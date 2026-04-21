@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>As-Built Drawing Services in San Francisco | Red Bridge Design</title>
+  <meta name="description" content="Red Bridge Design offers expert as-built drawings, permit sets, architectural drafting, and 3D BIM modeling for San Francisco and SF Bay Area projects. Field-verified, permit-ready." />
+  <link rel="canonical" href="https://redbridgedesign.com/services.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="As-Built Drawing Services in San Francisco | Red Bridge Design" />
+  <meta property="og:description" content="Expert as-built drawings, permit sets, architectural drafting, and 3D BIM modeling for San Francisco and SF Bay Area projects." />
+  <meta property="og:url" content="https://redbridgedesign.com/services.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://redbridgedesign.com/assets/og-image.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="As-Built Drawing Services in San Francisco | Red Bridge Design" />
+  <meta name="twitter:description" content="Expert as-built drawings, permit sets, and BIM modeling for San Francisco and SF Bay Area projects." />
+
+  <!-- Service JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "As-Built Drawings San Francisco",
+    "provider": {
+      "@type": "LocalBusiness",
+      "@id": "https://redbridgedesign.com/#business",
+      "name": "Red Bridge Design",
+      "telephone": "+14155312647",
+      "email": "info@redbridgedesign.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "San Francisco",
+        "addressRegion": "CA",
+        "addressCountry": "US"
+      }
+    },
+    "areaServed": [
+      {"@type": "City", "name": "San Francisco"},
+      {"@type": "City", "name": "Oakland"},
+      {"@type": "City", "name": "Berkeley"},
+      {"@type": "City", "name": "San Jose"},
+      {"@type": "City", "name": "Palo Alto"},
+      {"@type": "County", "name": "Marin County"}
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "As-Built Drawing Services",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "As-Built Drawings"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Permit Drawing Sets"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Historic & Renovation Documentation"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Architectural Drafting"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Commercial & Multi-Family As-Builts"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "3D Modeling & BIM"}}
+      ]
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg, var(--clr-navy) 0%, var(--clr-navy-mid) 100%);
+      color: white;
+      padding: 120px 0 80px;
+      text-align: center;
+    }
+    .page-hero .section-eyebrow { color: var(--clr-blue-light); }
+    .page-hero .section-title { color: white; }
+    .page-hero .section-subtitle { color: rgba(255,255,255,0.82); max-width: 700px; margin: 0 auto; }
+    .page-hero .btn--ghost { border-color: rgba(255,255,255,0.5); color: white; }
+    .page-hero .btn--ghost:hover { background: rgba(255,255,255,0.1); }
+    .nav__link--active { color: var(--clr-blue) !important; font-weight: 600; }
+
+    .service-detail { padding: 80px 0; }
+    .service-detail + .service-detail { border-top: 1px solid var(--clr-border); }
+    .service-detail__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .service-detail__grid--reverse { direction: rtl; }
+    .service-detail__grid--reverse > * { direction: ltr; }
+    .service-detail__icon { width: 64px; height: 64px; color: var(--clr-blue); margin-bottom: 20px; }
+    .service-detail h2 { font-size: 2rem; color: var(--clr-navy); margin-bottom: 16px; }
+    .service-detail p { color: var(--clr-text-muted); line-height: 1.8; margin-bottom: 16px; }
+    .service-detail ul { list-style: none; padding: 0; margin: 20px 0; }
+    .service-detail ul li { padding: 6px 0 6px 24px; position: relative; color: var(--clr-text); }
+    .service-detail ul li::before { content: "→"; position: absolute; left: 0; color: var(--clr-blue); }
+    .service-detail__visual { background: var(--clr-surface); border-radius: 12px; padding: 40px; min-height: 300px; display: flex; align-items: center; justify-content: center; }
+    .service-detail__visual svg { width: 100%; max-width: 200px; color: var(--clr-navy); opacity: 0.15; }
+
+    .service-areas-section { background: var(--clr-navy); color: white; padding: 80px 0; }
+    .service-areas-section h2 { color: white; text-align: center; margin-bottom: 12px; }
+    .service-areas-section .section-subtitle { color: rgba(255,255,255,0.7); text-align: center; max-width: 600px; margin: 0 auto 48px; }
+    .areas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    .areas-group h3 { color: var(--clr-blue-light); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+    .areas-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+    .areas-list li { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 6px 14px; font-size: 0.875rem; color: rgba(255,255,255,0.85); }
+
+    .services-cta { background: var(--clr-surface); padding: 80px 0; text-align: center; }
+    .services-cta h2 { color: var(--clr-navy); margin-bottom: 16px; }
+    .services-cta p { color: var(--clr-text-muted); max-width: 600px; margin: 0 auto 32px; }
+
+    @media (max-width: 768px) {
+      .service-detail__grid { grid-template-columns: 1fr; gap: 32px; }
+      .service-detail__grid--reverse { direction: ltr; }
+      .areas-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======= NAVIGATION ======= -->
+  <header class="site-header" id="site-header">
+    <nav class="nav container">
+      <a href="index.html" class="nav__logo">
+        <span class="nav__logo-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="4" y="28" width="32" height="3" rx="1.5" fill="currentColor"/>
+            <path d="M20 6 L36 28 H4 Z" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+            <line x1="20" y1="6" x2="20" y2="28" stroke="currentColor" stroke-width="2" stroke-dasharray="3 3"/>
+            <line x1="12" y1="28" x2="14" y2="22" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="28" y1="28" x2="26" y2="22" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </span>
+        <span class="nav__logo-text">Red Bridge<span>Design</span></span>
+      </a>
+
+      <ul class="nav__links" id="nav-links">
+        <li><a href="services.html" class="nav__link nav__link--active">Services</a></li>
+        <li><a href="portfolio.html" class="nav__link">Portfolio</a></li>
+        <li><a href="about.html" class="nav__link">About</a></li>
+        <li><a href="process.html" class="nav__link">Process</a></li>
+        <li><a href="testimonials.html" class="nav__link">Testimonials</a></li>
+        <li><a href="contact.html" class="nav__link nav__link--cta">Get a Quote</a></li>
+      </ul>
+
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ======= PAGE HERO ======= -->
+    <section class="page-hero section">
+      <div class="container">
+        <p class="section-eyebrow">San Francisco &amp; SF Bay Area</p>
+        <h1 class="section-title">As-Built Drawing Services<br/>in San Francisco</h1>
+        <p class="section-subtitle">From field survey to permit-ready drawings — Red Bridge Design has delivered precise as-built documentation for over 8,500 projects across San Francisco, Oakland, Berkeley, and the greater Bay Area since 2011.</p>
+      </div>
+    </section>
+
+    <!-- ======= SERVICE DETAILS ======= -->
+
+    <!-- As-Built Drawings -->
+    <section class="service-detail section" id="as-built-drawings">
+      <div class="container">
+        <div class="service-detail__grid">
+          <div class="service-detail__body">
+            <div class="service-detail__icon">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="6" y="6" width="36" height="36" rx="2" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                <line x1="6" y1="18" x2="42" y2="18" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="6" y1="30" x2="42" y2="30" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="18" y1="6" x2="18" y2="42" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="30" y1="6" x2="30" y2="42" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="24" cy="24" r="4" fill="currentColor" opacity="0.5"/>
+              </svg>
+            </div>
+            <h2>As-Built Drawings</h2>
+            <p>As-built drawings are our core specialty and the foundation of everything we do. We visit your San Francisco property with precision laser measuring equipment, methodically record every wall, opening, ceiling height, and structural feature, then produce fully drafted, field-verified drawings — an accurate record of your building exactly as it stands today.</p>
+            <p>San Francisco's building stock presents unique documentation challenges: Victorian-era Edwardian flats with non-standard wall configurations, hillside properties with split-level layouts, century-old mixed-use buildings where no two floors match, and SRO hotels that have been subdivided and renovated numerous times over the decades. Our team has worked in virtually every SF neighborhood and understands these complexities intimately.</p>
+            <p>Whether you're an SF architect preparing for a renovation, a contractor verifying existing conditions before bidding, a property owner listing a home for sale, or a developer conducting due diligence on a Mission District apartment building, our as-built drawings give you the ground truth you need.</p>
+            <ul>
+              <li>Residential &amp; Commercial As-Builts across all SF neighborhoods</li>
+              <li>Existing Conditions Floor Plans — scaled and dimensioned</li>
+              <li>Exterior &amp; Interior Elevations</li>
+              <li>Building Sections &amp; Structural Details</li>
+              <li>Roof Plans &amp; Site Plans</li>
+              <li>ADA Compliance Surveys</li>
+            </ul>
+            <a href="contact.html" class="btn btn--primary">Request a Quote</a>
+          </div>
+          <div class="service-detail__visual" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="6" width="36" height="36" rx="2" stroke="currentColor" stroke-width="2.5" fill="none"/>
+              <line x1="6" y1="18" x2="42" y2="18" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="6" y1="30" x2="42" y2="30" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="18" y1="6" x2="18" y2="42" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="30" y1="6" x2="30" y2="42" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="24" cy="24" r="4" fill="currentColor" opacity="0.5"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Permit Drawing Sets -->
+    <section class="service-detail section" id="permit-drawing-sets">
+      <div class="container">
+        <div class="service-detail__grid service-detail__grid--reverse">
+          <div class="service-detail__body">
+            <div class="service-detail__icon">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M10 38 L10 16 L24 8 L38 16 L38 38 Z" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+                <rect x="19" y="26" width="10" height="12" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <rect x="14" y="20" width="8" height="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <rect x="26" y="20" width="8" height="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              </svg>
+            </div>
+            <h2>Permit Drawing Sets</h2>
+            <p>Navigating San Francisco's Department of Building Inspection (SF DBI) permitting process requires drawings prepared to exacting standards. We produce complete, jurisdiction-specific permit drawing packages that are built directly on top of our field-verified as-built survey — so every proposed change is anchored to accurate existing conditions documentation.</p>
+            <p>San Francisco's planning and building codes are among the most complex in the nation. From the Planning Department's design review requirements in historic districts to SF DBI's Title 24 energy compliance and seismic requirements, permit sets for SF properties demand a higher level of precision and completeness than most jurisdictions. Our team has submitted hundreds of permit sets to SF DBI and understands what reviewers expect.</p>
+            <p>We handle a wide range of San Francisco permit types: residential addition permits, ADU (accessory dwelling unit) permits, soft-story seismic retrofit documentation, tenant improvement permits for SoMa and Mission District commercial spaces, and full gut renovation packages for Pacific Heights and Noe Valley properties.</p>
+            <ul>
+              <li>Renovation &amp; Addition Permit Sets for SF DBI</li>
+              <li>ADU (Accessory Dwelling Unit) Drawing Sets</li>
+              <li>Zoning &amp; Planning Code Compliance</li>
+              <li>Title Sheet, Cover Page &amp; Code Summary</li>
+              <li>Existing / Proposed Drawing Sets</li>
+              <li>Seismic &amp; Structural Documentation Support</li>
+            </ul>
+            <a href="contact.html" class="btn btn--primary">Request a Quote</a>
+          </div>
+          <div class="service-detail__visual" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 38 L10 16 L24 8 L38 16 L38 38 Z" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+              <rect x="19" y="26" width="10" height="12" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <rect x="14" y="20" width="8" height="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <rect x="26" y="20" width="8" height="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Historic & Renovation -->
+    <section class="service-detail section" id="historic-renovation">
+      <div class="container">
+        <div class="service-detail__grid">
+          <div class="service-detail__body">
+            <div class="service-detail__icon">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M10 30 Q 24 10 38 30" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                <line x1="10" y1="38" x2="38" y2="38" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <line x1="10" y1="30" x2="10" y2="38" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <line x1="38" y1="30" x2="38" y2="38" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="24" cy="22" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              </svg>
+            </div>
+            <h2>Historic &amp; Renovation</h2>
+            <p>San Francisco is one of the most architecturally rich cities in America, with an extraordinary concentration of intact Victorian and Edwardian residential buildings — Painted Ladies, Italianate cottages, Queen Anne row houses, Craftsman bungalows — as well as significant commercial and industrial heritage structures in neighborhoods like the Dogpatch, Potrero Hill, and the Mission. Documenting these structures requires a level of care and technical precision that goes well beyond standard as-built work.</p>
+            <p>Our team approaches historic measured drawings with meticulous attention to original detailing: cornices, bay windows, decorative friezes, original millwork profiles, and non-standard wall thicknesses from a pre-standardized era of construction. We capture the building as it truly exists — including the deviations from plumb and square that are part of what makes San Francisco's historic building stock so distinctive.</p>
+            <p>Whether you're restoring a Pacific Heights Queen Anne to its original appearance, converting a historic Dogpatch warehouse for adaptive reuse, or simply need accurate documentation before beginning a kitchen renovation in a Haight-Ashbury flat, our historic measured drawings give your project a solid foundation.</p>
+            <ul>
+              <li>Historic Measured Drawings of Victorian &amp; Edwardian Buildings</li>
+              <li>Pre-Renovation Existing Conditions Surveys</li>
+              <li>Adaptive Reuse Documentation</li>
+              <li>Preservation &amp; Restoration Support Drawings</li>
+              <li>Comparative Existing / Original Documentation</li>
+            </ul>
+            <a href="contact.html" class="btn btn--primary">Request a Quote</a>
+          </div>
+          <div class="service-detail__visual" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 30 Q 24 10 38 30" stroke="currentColor" stroke-width="2.5" fill="none"/>
+              <line x1="10" y1="38" x2="38" y2="38" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="10" y1="30" x2="10" y2="38" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="38" y1="30" x2="38" y2="38" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="24" cy="22" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architectural Drafting -->
+    <section class="service-detail section" id="architectural-drafting">
+      <div class="container">
+        <div class="service-detail__grid service-detail__grid--reverse">
+          <div class="service-detail__body">
+            <div class="service-detail__icon">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="8" y="38" width="32" height="3" rx="1.5" fill="currentColor" opacity="0.3"/>
+                <path d="M24 8 L40 38 H8 Z" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+                <line x1="24" y1="8" x2="24" y2="38" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3"/>
+              </svg>
+            </div>
+            <h2>Architectural Drafting</h2>
+            <p>Our CAD and BIM drafting services complement our field survey work, providing San Francisco architects, designers, and contractors with production-ready drawings for new construction, renovations, and additions. All drafting work is grounded in verified existing conditions — we don't draft from memories or rough sketches.</p>
+            <p>We work in AutoCAD 2025 and Revit 2025, the industry-standard platforms used by San Francisco's leading architectural firms. Our drafters are experienced in producing drawings to the layer standards, annotation conventions, and sheet organization that SF-area firms expect — so our deliverables integrate cleanly into your existing project workflow without reformatting.</p>
+            <p>Whether you're an SF architect who needs production drawing support for a Noe Valley addition, a contractor who needs a dimensioned floor plan before pricing a remodel in the Inner Richmond, or an interior designer who needs reflected ceiling plans for a Pacific Heights penthouse renovation, our drafting team handles it with precision and speed.</p>
+            <ul>
+              <li>Floor Plans &amp; Reflected Ceiling Plans</li>
+              <li>Exterior &amp; Interior Elevations</li>
+              <li>Building Sections &amp; Wall Details</li>
+              <li>Site Plans &amp; Plot Plans</li>
+              <li>Door, Window &amp; Finish Schedules</li>
+              <li>CAD (DWG/DXF) &amp; BIM (RVT) Deliverables</li>
+            </ul>
+            <a href="contact.html" class="btn btn--primary">Request a Quote</a>
+          </div>
+          <div class="service-detail__visual" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="38" width="32" height="3" rx="1.5" fill="currentColor" opacity="0.3"/>
+              <path d="M24 8 L40 38 H8 Z" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+              <line x1="24" y1="8" x2="24" y2="38" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Commercial & Multi-Family -->
+    <section class="service-detail section" id="commercial-multi-family">
+      <div class="container">
+        <div class="service-detail__grid">
+          <div class="service-detail__body">
+            <div class="service-detail__icon">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M8 40 L8 14 L18 14 L18 8 L30 8 L30 14 L40 14 L40 40 Z" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+                <line x1="16" y1="40" x2="16" y2="28" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="32" y1="40" x2="32" y2="28" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="16" y1="28" x2="32" y2="28" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="20" y="18" width="8" height="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              </svg>
+            </div>
+            <h2>Commercial &amp; Multi-Family</h2>
+            <p>San Francisco's commercial real estate market — from the Financial District's office towers to SoMa's creative campuses to the Castro's neighborhood retail corridors — demands precise as-built documentation for tenant improvements, lease renewals, property sales, and repositioning projects. We deliver large-scale as-built surveys and documentation coordinated across multiple floors and disciplines.</p>
+            <p>The Bay Area's multi-family housing market is equally demanding. San Francisco apartment buildings — from the classic six-unit Edwardian flat buildings of the Inner Sunset to the larger mixed-use residential towers of Rincon Hill — require accurate unit-by-unit floor plans for rent board submissions, condo conversion applications, and capital improvement projects. We have extensive experience documenting SF's diverse multi-family building stock.</p>
+            <p>For commercial clients across Oakland, Berkeley, Emeryville, and the Peninsula, we bring the same standards of accuracy and professionalism that San Francisco projects require — scaled to the scope of your building and coordinated with your project team from first contact to final delivery.</p>
+            <ul>
+              <li>Tenant Improvement As-Builts</li>
+              <li>Multi-Family Unit Plans &amp; Common Area Documentation</li>
+              <li>ADA Compliance Surveys &amp; Documentation</li>
+              <li>Phased Construction Drawings</li>
+              <li>Condo Conversion Floor Plans</li>
+              <li>Property Management &amp; Facilities As-Builts</li>
+            </ul>
+            <a href="contact.html" class="btn btn--primary">Request a Quote</a>
+          </div>
+          <div class="service-detail__visual" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 40 L8 14 L18 14 L18 8 L30 8 L30 14 L40 14 L40 40 Z" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+              <line x1="16" y1="40" x2="16" y2="28" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="32" y1="40" x2="32" y2="28" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="16" y1="28" x2="32" y2="28" stroke="currentColor" stroke-width="1.5"/>
+              <rect x="20" y="18" width="8" height="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3D Modeling & BIM -->
+    <section class="service-detail section" id="3d-modeling-bim">
+      <div class="container">
+        <div class="service-detail__grid service-detail__grid--reverse">
+          <div class="service-detail__body">
+            <div class="service-detail__icon">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                <path d="M24 8 L24 24 L32 32" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="24" cy="24" r="2" fill="currentColor"/>
+              </svg>
+            </div>
+            <h2>3D Modeling &amp; BIM</h2>
+            <p>As San Francisco architects and developers increasingly adopt BIM-centric workflows, accurate Revit as-built models have become essential deliverables for renovation and repositioning projects. We build Revit BIM models directly from our field survey data — not from secondhand measurements or outdated drawings — giving your design team a trustworthy spatial model to design from with confidence.</p>
+            <p>BIM as-built models are particularly valuable for San Francisco's complex building types: historic Victorians with irregular geometry, multi-story mixed-use buildings where MEP coordination is critical, and large multi-family projects where clash detection between new and existing systems can save significant money during construction. Our Revit models include the level of detail appropriate to your project phase and BIM execution plan requirements.</p>
+            <p>We also produce SketchUp Pro 3D models for design exploration and client presentation, as well as coordinating with point cloud (laser scan) data for projects where scan-to-BIM workflows are required. Whether your project is in Pacific Heights or Palo Alto, SoMa or Sausalito, our 3D modeling services bring precision spatial intelligence to your design process.</p>
+            <ul>
+              <li>Revit As-Built BIM Models (LOD 200–350)</li>
+              <li>SketchUp Pro 3D Models</li>
+              <li>Scan-to-BIM Coordination</li>
+              <li>Clash Detection Support</li>
+              <li>MEP Rough-In Documentation</li>
+              <li>Structural Bay &amp; Column Grid Models</li>
+            </ul>
+            <a href="contact.html" class="btn btn--primary">Request a Quote</a>
+          </div>
+          <div class="service-detail__visual" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2.5" fill="none"/>
+              <path d="M24 8 L24 24 L32 32" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="24" cy="24" r="2" fill="currentColor"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= SERVICE AREAS ======= -->
+    <section class="service-areas-section">
+      <div class="container">
+        <h2 class="section-title">Areas We Serve</h2>
+        <p class="section-subtitle">We cover San Francisco and the entire SF Bay Area — from the North Bay to the South Bay, East Bay to the Peninsula.</p>
+        <div class="areas-grid">
+          <div class="areas-group">
+            <h3>San Francisco Neighborhoods</h3>
+            <ul class="areas-list">
+              <li>Mission District</li>
+              <li>Pacific Heights</li>
+              <li>Noe Valley</li>
+              <li>SoMa</li>
+              <li>Castro</li>
+              <li>Inner Richmond</li>
+              <li>Outer Sunset</li>
+              <li>Marina District</li>
+              <li>Haight-Ashbury</li>
+              <li>Potrero Hill</li>
+              <li>Bernal Heights</li>
+              <li>Twin Peaks</li>
+              <li>Excelsior</li>
+              <li>Bayview</li>
+              <li>Dogpatch</li>
+              <li>Russian Hill</li>
+              <li>North Beach</li>
+              <li>Financial District</li>
+            </ul>
+          </div>
+          <div class="areas-group">
+            <h3>Bay Area Cities</h3>
+            <ul class="areas-list">
+              <li>Oakland</li>
+              <li>Berkeley</li>
+              <li>Emeryville</li>
+              <li>Alameda</li>
+              <li>Marin County</li>
+              <li>Sausalito</li>
+              <li>Mill Valley</li>
+              <li>San Jose</li>
+              <li>Palo Alto</li>
+              <li>Menlo Park</li>
+              <li>Burlingame</li>
+              <li>San Mateo</li>
+              <li>Redwood City</li>
+              <li>Walnut Creek</li>
+              <li>Concord</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= CTA ======= -->
+    <section class="services-cta">
+      <div class="container">
+        <h2 class="section-title">Ready to Start Your San Francisco Project?</h2>
+        <p>Tell us about your property and what you need. We'll respond within 4 business hours with a fixed-fee proposal — no obligation, no guesswork.</p>
+        <a href="contact.html" class="btn btn--primary">Request a Free Quote</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="nav__logo">
+            <span class="nav__logo-icon">
+              <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="4" y="28" width="32" height="3" rx="1.5" fill="currentColor"/>
+                <path d="M20 6 L36 28 H4 Z" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+                <line x1="20" y1="6" x2="20" y2="28" stroke="currentColor" stroke-width="2" stroke-dasharray="3 3"/>
+              </svg>
+            </span>
+            <span class="nav__logo-text">Red Bridge<span>Design</span></span>
+          </a>
+          <p class="footer__tagline">Specialist as-built drawings and architectural documentation for San Francisco and SF Bay Area architects, contractors, and property owners since 2011.</p>
+        </div>
+
+        <div class="footer__col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html">Architectural Drafting</a></li>
+            <li><a href="services.html">As-Built Drawings</a></li>
+            <li><a href="services.html">Permit Sets</a></li>
+            <li><a href="services.html">3D Modeling</a></li>
+            <li><a href="services.html">Commercial Projects</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="process.html">Our Process</a></li>
+            <li><a href="testimonials.html">Testimonials</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Service Areas</h4>
+          <ul>
+            <li>San Francisco</li>
+            <li>Oakland</li>
+            <li>Berkeley</li>
+            <li>Marin County</li>
+            <li>San Jose</li>
+            <li>Palo Alto</li>
+            <li>East Bay</li>
+            <li>Peninsula</li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="mailto:info@redbridgedesign.com">info@redbridgedesign.com</a></li>
+            <li><a href="tel:4155312647">415-531-2647</a></li>
+          </ul>
+          <div class="footer__social">
+            <a href="#" aria-label="LinkedIn" class="footer__social-link">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram" class="footer__social-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            </a>
+            <a href="#" aria-label="Houzz" class="footer__social-link">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L3 9v13h7v-7h4v7h7V9z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>&copy; 2026 Red Bridge Design. All rights reserved.</p>
+        <div class="footer__bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======= BACK TO TOP ======= -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Testimonials | Red Bridge Design San Francisco</title>
+  <meta name="description" content="Read what San Francisco architects, contractors, and property owners say about Red Bridge Design's as-built drawing services across the SF Bay Area." />
+  <link rel="canonical" href="https://redbridgedesign.com/testimonials.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Client Testimonials | Red Bridge Design San Francisco" />
+  <meta property="og:description" content="Read what San Francisco architects, contractors, and property owners say about Red Bridge Design's as-built drawing services." />
+  <meta property="og:url" content="https://redbridgedesign.com/testimonials.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://redbridgedesign.com/assets/og-image.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Client Testimonials | Red Bridge Design San Francisco" />
+  <meta name="twitter:description" content="What San Francisco architects, contractors, and property owners say about Red Bridge Design." />
+
+  <!-- Review JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://redbridgedesign.com/#business",
+    "name": "Red Bridge Design",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "6",
+      "bestRating": "5"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": {"@type": "Person", "name": "Marcus Reid"},
+        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+        "reviewBody": "Red Bridge Design delivered a complete as-built set for our 8,000 SF commercial space in under a week. The drawings were incredibly accurate — the building department had zero comments. I've stopped going anywhere else for as-builts."
+      },
+      {
+        "@type": "Review",
+        "author": {"@type": "Person", "name": "Thomas Walsh"},
+        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+        "reviewBody": "We hired Red Bridge Design for a historic renovation and their measured drawings were exceptional — capturing every quirk of the 1920s building with the level of detail our preservation consultant required."
+      },
+      {
+        "@type": "Review",
+        "author": {"@type": "Person", "name": "Sandra Liu, AIA"},
+        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+        "reviewBody": "As an architect, I rely on Red Bridge Design for as-built surveys before every major renovation. Their field measurements are always spot-on and the drawings come back clean and permit-ready. They're a genuine extension of our office."
+      },
+      {
+        "@type": "Review",
+        "author": {"@type": "Person", "name": "Carmen Jiménez"},
+        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+        "reviewBody": "We needed as-builts fast for a tenant build-out and Red Bridge delivered in 3 days. The drawings were detailed enough that our contractor barely needed to visit the site before pricing the job."
+      },
+      {
+        "@type": "Review",
+        "author": {"@type": "Person", "name": "David Park, AIA"},
+        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+        "reviewBody": "We've used Red Bridge Design for dozens of San Francisco projects — Victorians in Noe Valley, mixed-use buildings in the Mission, a commercial space in SoMa. They know SF buildings. The drawings always come back formatted exactly as our DBI submissions require."
+      },
+      {
+        "@type": "Review",
+        "author": {"@type": "Person", "name": "Rachel Torres"},
+        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+        "reviewBody": "I hired Red Bridge Design for as-builts on a Potrero Hill Victorian before starting a major renovation. Their drawings caught a structural oddity in the rear addition that saved us a significant change order during construction. Worth every penny."
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg, var(--clr-navy) 0%, var(--clr-navy-mid) 100%);
+      color: white;
+      padding: 120px 0 80px;
+      text-align: center;
+    }
+    .page-hero .section-eyebrow { color: var(--clr-blue-light); }
+    .page-hero .section-title { color: white; }
+    .page-hero .section-subtitle { color: rgba(255,255,255,0.82); max-width: 700px; margin: 0 auto; }
+    .nav__link--active { color: var(--clr-blue) !important; font-weight: 600; }
+
+    .testimonials-grid-section { padding: 80px 0; }
+    .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .tcard { background: white; border-radius: 16px; padding: 36px; border: 1px solid var(--clr-border); box-shadow: 0 2px 12px rgba(0,0,0,0.05); display: flex; flex-direction: column; gap: 20px; }
+    .tcard__stars { color: #f5a623; font-size: 1.1rem; letter-spacing: 2px; }
+    .tcard__quote { color: var(--clr-text-muted); line-height: 1.8; font-size: 0.975rem; flex: 1; font-style: italic; margin: 0; }
+    .tcard__author { display: flex; align-items: center; gap: 14px; }
+    .tcard__avatar { width: 46px; height: 46px; border-radius: 50%; background: var(--clr-navy); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.875rem; flex-shrink: 0; }
+    .tcard__author strong { display: block; color: var(--clr-navy); font-size: 0.9rem; }
+    .tcard__author span { color: var(--clr-text-muted); font-size: 0.8rem; }
+
+    .testimonials-stats { background: var(--clr-surface); padding: 64px 0; }
+    .testimonials-stats__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; text-align: center; }
+    .ts-stat__number { font-size: 3rem; font-weight: 700; color: var(--clr-navy); }
+    .ts-stat__label { color: var(--clr-text-muted); font-size: 0.875rem; margin-top: 4px; }
+
+    .testimonials-cta { padding: 80px 0; text-align: center; }
+    .testimonials-cta h2 { color: var(--clr-navy); margin-bottom: 16px; }
+    .testimonials-cta p { color: var(--clr-text-muted); max-width: 560px; margin: 0 auto 32px; }
+
+    @media (max-width: 768px) {
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .testimonials-stats__grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======= NAVIGATION ======= -->
+  <header class="site-header" id="site-header">
+    <nav class="nav container">
+      <a href="index.html" class="nav__logo">
+        <span class="nav__logo-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="4" y="28" width="32" height="3" rx="1.5" fill="currentColor"/>
+            <path d="M20 6 L36 28 H4 Z" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+            <line x1="20" y1="6" x2="20" y2="28" stroke="currentColor" stroke-width="2" stroke-dasharray="3 3"/>
+            <line x1="12" y1="28" x2="14" y2="22" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="28" y1="28" x2="26" y2="22" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </span>
+        <span class="nav__logo-text">Red Bridge<span>Design</span></span>
+      </a>
+
+      <ul class="nav__links" id="nav-links">
+        <li><a href="services.html" class="nav__link">Services</a></li>
+        <li><a href="portfolio.html" class="nav__link">Portfolio</a></li>
+        <li><a href="about.html" class="nav__link">About</a></li>
+        <li><a href="process.html" class="nav__link">Process</a></li>
+        <li><a href="testimonials.html" class="nav__link nav__link--active">Testimonials</a></li>
+        <li><a href="contact.html" class="nav__link nav__link--cta">Get a Quote</a></li>
+      </ul>
+
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ======= PAGE HERO ======= -->
+    <section class="page-hero section">
+      <div class="container">
+        <p class="section-eyebrow">Client Voices</p>
+        <h1 class="section-title">What San Francisco Clients Say<br/>About Red Bridge Design</h1>
+        <p class="section-subtitle">Over 8,500 projects and 15 years of work in San Francisco and the SF Bay Area — here's what architects, contractors, and property owners have to say.</p>
+      </div>
+    </section>
+
+    <!-- ======= TESTIMONIAL STATS ======= -->
+    <section class="testimonials-stats">
+      <div class="container">
+        <div class="testimonials-stats__grid">
+          <div>
+            <div class="ts-stat__number">98%</div>
+            <div class="ts-stat__label">Client Satisfaction Rate</div>
+          </div>
+          <div>
+            <div class="ts-stat__number">8,500+</div>
+            <div class="ts-stat__label">Projects Completed</div>
+          </div>
+          <div>
+            <div class="ts-stat__number">15 yrs</div>
+            <div class="ts-stat__label">Serving SF Bay Area</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= TESTIMONIALS GRID ======= -->
+    <section class="testimonials-grid-section">
+      <div class="container">
+        <div class="section-header reveal" style="text-align:center; margin-bottom: 48px;">
+          <p class="section-eyebrow">Reviews from SF Bay Area Clients</p>
+          <h2 class="section-title">Trusted by San Francisco Architects,<br/>Contractors &amp; Property Owners</h2>
+        </div>
+
+        <div class="testimonials-grid">
+
+          <article class="tcard reveal">
+            <div class="tcard__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote class="tcard__quote">
+              "Red Bridge Design delivered a complete as-built set for our 8,000 SF commercial space in under a week. The drawings were incredibly accurate — the building department had zero comments. I've stopped going anywhere else for as-builts."
+            </blockquote>
+            <div class="tcard__author">
+              <div class="tcard__avatar" aria-hidden="true">MR</div>
+              <div>
+                <strong>Marcus Reid</strong>
+                <span>Principal, Reid Development Group</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tcard reveal reveal--delay-1">
+            <div class="tcard__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote class="tcard__quote">
+              "We hired Red Bridge Design for a historic renovation and their measured drawings were exceptional — capturing every quirk of the 1920s building with the level of detail our preservation consultant required. Accuracy and detail are clearly their priority."
+            </blockquote>
+            <div class="tcard__author">
+              <div class="tcard__avatar" aria-hidden="true">TW</div>
+              <div>
+                <strong>Thomas Walsh</strong>
+                <span>Owner, Walsh Heritage Properties</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tcard reveal">
+            <div class="tcard__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote class="tcard__quote">
+              "As an architect, I rely on Red Bridge Design for as-built surveys before every major renovation. Their field measurements are always spot-on and the drawings come back clean and permit-ready. They're a genuine extension of our office."
+            </blockquote>
+            <div class="tcard__author">
+              <div class="tcard__avatar" aria-hidden="true">SL</div>
+              <div>
+                <strong>Sandra Liu, AIA</strong>
+                <span>Principal Architect, Liu+Park Studio</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tcard reveal reveal--delay-1">
+            <div class="tcard__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote class="tcard__quote">
+              "We needed as-builts fast for a tenant build-out and Red Bridge delivered in 3 days. The drawings were detailed enough that our contractor barely needed to visit the site before pricing the job. Outstanding service."
+            </blockquote>
+            <div class="tcard__author">
+              <div class="tcard__avatar" aria-hidden="true">CJ</div>
+              <div>
+                <strong>Carmen Jiménez</strong>
+                <span>Project Manager, Clearview Construction</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tcard reveal">
+            <div class="tcard__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote class="tcard__quote">
+              "We've used Red Bridge Design for dozens of San Francisco projects over the past five years — Victorians in Noe Valley, mixed-use buildings in the Mission, a commercial space in SoMa. They know SF buildings inside and out. The drawings always come back formatted exactly as our DBI submissions require, and we've never had a plan check issue related to existing conditions documentation."
+            </blockquote>
+            <div class="tcard__author">
+              <div class="tcard__avatar" aria-hidden="true">DP</div>
+              <div>
+                <strong>David Park, AIA</strong>
+                <span>Principal, Park + Associates Architecture, San Francisco</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tcard reveal reveal--delay-1">
+            <div class="tcard__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote class="tcard__quote">
+              "I hired Red Bridge Design for as-builts on my Potrero Hill Victorian before starting a major renovation. Their drawings caught a structural oddity in the rear addition — a non-load-bearing wall that the previous owners had framed as if load-bearing — that saved us a significant change order during construction. The as-builts paid for themselves many times over."
+            </blockquote>
+            <div class="tcard__author">
+              <div class="tcard__avatar" aria-hidden="true">RT</div>
+              <div>
+                <strong>Rachel Torres</strong>
+                <span>Property Owner, Potrero Hill, San Francisco</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= CTA ======= -->
+    <section class="testimonials-cta">
+      <div class="container">
+        <h2 class="section-title">Ready to Join Our Happy Clients?</h2>
+        <p>Whether you're an SF architect, a Bay Area contractor, or a property owner, we're ready to deliver as-built drawings you can count on. Request a free quote today.</p>
+        <a href="contact.html" class="btn btn--primary">Request a Free Quote</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="nav__logo">
+            <span class="nav__logo-icon">
+              <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="4" y="28" width="32" height="3" rx="1.5" fill="currentColor"/>
+                <path d="M20 6 L36 28 H4 Z" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+                <line x1="20" y1="6" x2="20" y2="28" stroke="currentColor" stroke-width="2" stroke-dasharray="3 3"/>
+              </svg>
+            </span>
+            <span class="nav__logo-text">Red Bridge<span>Design</span></span>
+          </a>
+          <p class="footer__tagline">Specialist as-built drawings and architectural documentation for San Francisco and SF Bay Area architects, contractors, and property owners since 2011.</p>
+        </div>
+
+        <div class="footer__col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html">Architectural Drafting</a></li>
+            <li><a href="services.html">As-Built Drawings</a></li>
+            <li><a href="services.html">Permit Sets</a></li>
+            <li><a href="services.html">3D Modeling</a></li>
+            <li><a href="services.html">Commercial Projects</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="process.html">Our Process</a></li>
+            <li><a href="testimonials.html">Testimonials</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Service Areas</h4>
+          <ul>
+            <li>San Francisco</li>
+            <li>Oakland</li>
+            <li>Berkeley</li>
+            <li>Marin County</li>
+            <li>San Jose</li>
+            <li>Palo Alto</li>
+            <li>East Bay</li>
+            <li>Peninsula</li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="mailto:info@redbridgedesign.com">info@redbridgedesign.com</a></li>
+            <li><a href="tel:4155312647">415-531-2647</a></li>
+          </ul>
+          <div class="footer__social">
+            <a href="#" aria-label="LinkedIn" class="footer__social-link">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram" class="footer__social-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            </a>
+            <a href="#" aria-label="Houzz" class="footer__social-link">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L3 9v13h7v-7h4v7h7V9z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>&copy; 2026 Red Bridge Design. All rights reserved.</p>
+        <div class="footer__bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======= BACK TO TOP ======= -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
