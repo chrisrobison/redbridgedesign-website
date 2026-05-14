@@ -1329,9 +1329,9 @@ input, textarea, select { font-family: inherit; }
   z-index: 2000;
   background: #0009;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
-  padding: 32px;
+  padding: 0;
   backdrop-filter: blur(8px);
   animation: fadeIn .25s var(--ease);
 }
@@ -1340,9 +1340,10 @@ input, textarea, select { font-family: inherit; }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 .lightbox__close {
-  position: absolute;
-  top: 20px;
-  right: 24px;
+  position: fixed;
+  top: 16px;
+  right: 20px;
+  z-index: 2100;
   font-size: 2rem;
   color: rgba(255,255,255,.7);
   width: 44px;
@@ -1356,15 +1357,16 @@ input, textarea, select { font-family: inherit; }
 .lightbox__close:hover { color: white; background: rgba(255,255,255,.1); }
 
 .lightbox__content {
-  max-width: 920px;
   width: 100%;
+  height: 100%;
   background: var(--clr-navy);
-  border-radius: var(--radius-lg);
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
   animation: scaleIn .3s var(--ease-out);
 }
-@keyframes scaleIn { from { opacity: 0; transform: scale(.94); } to { opacity: 1; transform: none; } }
+@keyframes scaleIn { from { opacity: 0; transform: scale(.98); } to { opacity: 1; transform: none; } }
 
 /* PDF stage inside lightbox */
 .lightbox__pdf-stage {
@@ -1373,17 +1375,14 @@ input, textarea, select { font-family: inherit; }
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 300px;
-  max-height: 55vh;
+  flex: 1;
+  min-height: 0;
   overflow: hidden;
 }
 
 .lightbox__pdf-canvas {
   display: block;
-  max-width: 100%;
-  max-height: 55vh;
-  width: auto;
-  height: auto;
+  flex-shrink: 0;
 }
 
 /* Thumbnail strip */
@@ -1519,7 +1518,29 @@ input, textarea, select { font-family: inherit; }
   transition: background var(--duration) var(--ease), border-color var(--duration) var(--ease);
 }
 .lightbox__pdf-btn:hover { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.45); }
+.lightbox__pdf-btn:disabled { opacity: 0.32; pointer-events: none; }
 .lightbox__pdf-btn svg { width: 15px; height: 15px; }
+.lightbox__pdf-btn--fit svg { width: 13px; height: 13px; }
+
+/* Zoom controls group */
+.lightbox__pdf-zoom-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-right: 14px;
+  margin-right: 6px;
+  border-right: 1px solid rgba(255,255,255,.12);
+}
+
+.lightbox__zoom-pct {
+  font-size: .75rem;
+  font-family: monospace;
+  color: rgba(255,255,255,.6);
+  min-width: 3em;
+  text-align: center;
+  letter-spacing: .03em;
+  user-select: none;
+}
 
 /* ── 16. BACK TO TOP ── */
 .back-to-top {

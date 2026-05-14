@@ -90,7 +90,7 @@
     .service-detail ul { list-style: none; padding: 0; margin: 20px 0; }
     .service-detail ul li { padding: 6px 0 6px 24px; position: relative; color: var(--clr-text); }
     .service-detail ul li::before { content: "→"; position: absolute; left: 0; color: var(--clr-blue); }
-    .service-detail__visual { background: var(--clr-surface); border-radius: 12px; padding: 40px; min-height: 300px; display: flex; align-items: center; justify-content: center; }
+    .service-detail__visual { background: var(--clr-surface); border-radius: 12px; padding: 40px; min-height: 300px; display: flex; align-items: center; justify-content: center; flex-direction: column; }
     .service-detail__visual svg { width: 100%; max-width: 200px; color: var(--clr-navy); opacity: 0.15; }
 
     .service-areas-section { background: var(--clr-navy); color: white; padding: 80px 0; }
@@ -385,11 +385,12 @@
             <a href="contact.html" class="btn btn--primary">Request a Quote</a>
           </div>
           <div class="service-detail__visual" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2.5" fill="none"/>
-              <path d="M24 8 L24 24 L32 32" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-              <circle cx="24" cy="24" r="2" fill="currentColor"/>
-            </svg>
+
+              <img src="assets/lumion-example.png">
+              <br>
+              <img src="assets/lumi2.jpg">
+              <br>
+              <img src="assets/lumi1.jpg">
           </div>
         </div>
       </div>

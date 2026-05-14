@@ -30,12 +30,13 @@ function clean_header(string $value): string {
 }
 
 // ── Collect & sanitize fields ─────────────────────────────────────────────
-$name         = clean_header($_POST['name']         ?? '');
-$email        = clean_header($_POST['email']        ?? '');
-$phone        = clean_header($_POST['phone']        ?? '');
-$service      = clean_header($_POST['service']      ?? '');
-$project_size = clean($_POST['project-size']        ?? '');
-$message      = clean($_POST['message']             ?? '');
+$name             = clean_header($_POST['name']             ?? '');
+$email            = clean_header($_POST['email']            ?? '');
+$phone            = clean_header($_POST['phone']            ?? '');
+$service          = clean_header($_POST['service']          ?? '');
+$property_address = clean($_POST['property-address']        ?? '');
+$project_size     = clean($_POST['project-size']            ?? '');
+$message          = clean($_POST['message']                 ?? '');
 $rush         = isset($_POST['rush']) ? 'Yes' : 'No';
 $timestamp    = date('Y-m-d H:i:s T');
 $ip           = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
@@ -46,6 +47,7 @@ if (empty($name))                          $errors[] = 'Name is required.';
 if (empty($email) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
                                            $errors[] = 'Valid email is required.';
 if (empty($service))                       $errors[] = 'Service is required.';
+if (strlen($property_address) < 5)         $errors[] = 'Property address is required.';
 if (strlen($message) < 10)                 $errors[] = 'Message is too short.';
 
 if ($errors) {
@@ -62,6 +64,7 @@ $log_entry .= "Name      : {$name}"      . PHP_EOL;
 $log_entry .= "Email     : {$email}"     . PHP_EOL;
 $log_entry .= "Phone     : {$phone}"     . PHP_EOL;
 $log_entry .= "Service   : {$service}"   . PHP_EOL;
+$log_entry .= "Address   : {$property_address}" . PHP_EOL;
 $log_entry .= "Size/Scope: {$project_size}" . PHP_EOL;
 $log_entry .= "Rush      : {$rush}"      . PHP_EOL;
 $log_entry .= "Message   :" . PHP_EOL . $message . PHP_EOL;
@@ -80,6 +83,7 @@ Name      : {$name}
 Email     : {$email}
 Phone     : {$phone}
 Service   : {$service}
+Address   : {$property_address}
 Size/Scope: {$project_size}
 Rush      : {$rush}
 ---------------------------------------------------------

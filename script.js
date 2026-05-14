@@ -235,10 +235,19 @@ const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
   const closeBtn = qs('#lightbox-close');
   if (!lightbox) return;
 
-  let pdfDoc      = null;
-  let curPage     = 1;
-  let totalPages  = 1;
-  let lbRendering = false;
+  let pdfDoc       = null;
+  let curPage      = 1;
+  let totalPages   = 1;
+  let lbRendering  = false;
+
+  /* ---- Zoom state ---- */
+  const MIN_ZOOM = 1;
+  const MAX_ZOOM = 5;
+  let zoomLevel    = 1;   // current logical zoom
+  let renderedZoom = 1;   // zoom at which canvas was last rendered
+  let baseScale    = 1;   // PDF→CSS px scale that fits page to stage at zoom=1
+  let panX = 0, panY = 0; // canvas centre offset from stage centre (CSS px)
+  let renderTimer  = null;
 
   /* ---- Build PDF viewer UI inside lightbox__content ---- */
   function buildUI(title) {
@@ -254,6 +263,18 @@ const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
       <div class="lightbox__pdf-bar">
         <span class="lightbox__pdf-title" id="lb-title">${title}</span>
         <div class="lightbox__pdf-controls">
+          <div class="lightbox__pdf-zoom-group">
+            <button class="lightbox__pdf-btn" id="lb-zoom-out" aria-label="Zoom out" title="Zoom out (-)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <span class="lightbox__zoom-pct" id="lb-zoom-pct">100%</span>
+            <button class="lightbox__pdf-btn" id="lb-zoom-in" aria-label="Zoom in" title="Zoom in (+)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <button class="lightbox__pdf-btn lightbox__pdf-btn--fit" id="lb-zoom-fit" aria-label="Fit to window" title="Fit to window (0)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 8V4h4M16 4h4v4M20 16v4h-4M8 20H4v-4"/></svg>
+            </button>
+          </div>
           <span class="lightbox__pdf-counter" id="lb-counter"></span>
           <div class="lightbox__pdf-nav-group">
             <button class="lightbox__pdf-btn" id="lb-prev" aria-label="Previous sheet">
@@ -268,6 +289,194 @@ const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
     `;
     qs('#lb-prev')?.addEventListener('click', () => lbGoTo(curPage - 1));
     qs('#lb-next')?.addEventListener('click', () => lbGoTo(curPage + 1));
+    qs('#lb-zoom-in')?.addEventListener('click',  () => applyZoom(zoomLevel * 1.25));
+    qs('#lb-zoom-out')?.addEventListener('click', () => applyZoom(zoomLevel / 1.25));
+    qs('#lb-zoom-fit')?.addEventListener('click', resetZoom);
+    wireStageInteraction();
+  }
+
+  /* ---- Zoom helpers ---- */
+
+  // Apply a new zoom level, optionally keeping the point (fx, fy) — relative to
+  // stage centre — visually fixed.
+  function applyZoom(newZoom, fx, fy) {
+    newZoom = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, newZoom));
+    if (fx !== undefined && fy !== undefined) {
+      const ratio = newZoom / zoomLevel;
+      panX = fx - (fx - panX) * ratio;
+      panY = fy - (fy - panY) * ratio;
+    }
+    zoomLevel = newZoom;
+    clampPan();
+    applyTransform();
+    updateZoomUI();
+    // Re-render at higher quality after the user pauses
+    clearTimeout(renderTimer);
+    renderTimer = setTimeout(() => {
+      if (Math.abs(zoomLevel - renderedZoom) > 0.05) lbRenderPage(curPage);
+    }, 350);
+  }
+
+  // Reset zoom to fit and re-render.
+  function resetZoom() {
+    clearTimeout(renderTimer);
+    zoomLevel = 1; panX = 0; panY = 0;
+    const canvas = qs('#lb-canvas');
+    if (canvas) canvas.style.transform = '';
+    syncStageCursor();
+    updateZoomUI();
+    lbRenderPage(curPage);
+  }
+
+  // Prevent panning so far that the canvas fully leaves the stage.
+  function clampPan() {
+    const stage  = qs('#lb-stage');
+    const canvas = qs('#lb-canvas');
+    if (!stage || !canvas) return;
+    const vs   = zoomLevel / (renderedZoom || 1);
+    const visW = parseFloat(canvas.style.width  || 0) * vs;
+    const visH = parseFloat(canvas.style.height || 0) * vs;
+    const maxPX = Math.max(0, (visW - stage.clientWidth)  / 2);
+    const maxPY = Math.max(0, (visH - stage.clientHeight) / 2);
+    panX = Math.max(-maxPX, Math.min(maxPX, panX));
+    panY = Math.max(-maxPY, Math.min(maxPY, panY));
+  }
+
+  // Push current pan + visual-scale onto the canvas CSS transform.
+  // CSS: translate(panX, panY) scale(vs) — scale is applied around the canvas
+  // centre (= stage centre via flex), then the whole thing is translated.
+  function applyTransform() {
+    const canvas = qs('#lb-canvas');
+    if (!canvas) return;
+    const vs = zoomLevel / (renderedZoom || 1);
+    canvas.style.transform = `translate(${panX}px, ${panY}px) scale(${vs})`;
+    syncStageCursor();
+  }
+
+  function syncStageCursor() {
+    const stage = qs('#lb-stage');
+    if (stage) stage.style.cursor = zoomLevel > 1 ? 'grab' : '';
+  }
+
+  function updateZoomUI() {
+    const pct = qs('#lb-zoom-pct');
+    if (pct) pct.textContent = Math.round(zoomLevel * 100) + '%';
+    const btnOut = qs('#lb-zoom-out');
+    const btnIn  = qs('#lb-zoom-in');
+    if (btnOut) btnOut.disabled = zoomLevel <= MIN_ZOOM;
+    if (btnIn)  btnIn.disabled  = zoomLevel >= MAX_ZOOM;
+  }
+
+  /* ---- Stage interaction: wheel zoom, drag-to-pan, pinch-to-zoom ---- */
+  function wireStageInteraction() {
+    const stage = qs('#lb-stage');
+    if (!stage) return;
+
+    /* Mouse-wheel zoom toward cursor */
+    stage.addEventListener('wheel', e => {
+      e.preventDefault();
+      const rect = stage.getBoundingClientRect();
+      const fx = e.clientX - rect.left  - rect.width  / 2;
+      const fy = e.clientY - rect.top   - rect.height / 2;
+      const factor = e.deltaY < 0 ? 1.12 : 1 / 1.12;
+      applyZoom(zoomLevel * factor, fx, fy);
+    }, { passive: false });
+
+    /* Pointer drag-to-pan (mouse / stylus) */
+    let dragging = false, dragX0 = 0, dragY0 = 0, panX0 = 0, panY0 = 0;
+
+    stage.addEventListener('pointerdown', e => {
+      if (e.pointerType === 'touch') return;
+      if (zoomLevel <= 1) return;
+      dragging = true;
+      stage.setPointerCapture(e.pointerId);
+      stage.style.cursor = 'grabbing';
+      dragX0 = e.clientX; dragY0 = e.clientY;
+      panX0  = panX;      panY0  = panY;
+    });
+
+    stage.addEventListener('pointermove', e => {
+      if (!dragging) return;
+      panX = panX0 + (e.clientX - dragX0);
+      panY = panY0 + (e.clientY - dragY0);
+      clampPan();
+      applyTransform();
+      stage.style.cursor = 'grabbing';
+    });
+
+    const endDrag = () => {
+      dragging = false;
+      syncStageCursor();
+    };
+    stage.addEventListener('pointerup',     endDrag);
+    stage.addEventListener('pointercancel', endDrag);
+
+    /* Touch: single-finger pan + two-finger pinch-to-zoom */
+    let pinchDist0 = 0, pinchZoom0 = 1, pinchFX = 0, pinchFY = 0;
+    let pinchPanX0 = 0, pinchPanY0 = 0;
+    let tDragX0 = 0, tDragY0 = 0, tPanX0 = 0, tPanY0 = 0;
+    let touchPanning = false;
+
+    stage.addEventListener('touchstart', e => {
+      e.preventDefault();
+      if (e.touches.length === 2) {
+        touchPanning = false;
+        const t1 = e.touches[0], t2 = e.touches[1];
+        pinchDist0 = Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY);
+        pinchZoom0 = zoomLevel;
+        pinchPanX0 = panX; pinchPanY0 = panY;
+        const rect = stage.getBoundingClientRect();
+        pinchFX = (t1.clientX + t2.clientX) / 2 - rect.left - rect.width  / 2;
+        pinchFY = (t1.clientY + t2.clientY) / 2 - rect.top  - rect.height / 2;
+      } else if (e.touches.length === 1 && zoomLevel > 1) {
+        touchPanning = true;
+        tDragX0 = e.touches[0].clientX; tDragY0 = e.touches[0].clientY;
+        tPanX0  = panX; tPanY0 = panY;
+      }
+    }, { passive: false });
+
+    stage.addEventListener('touchmove', e => {
+      e.preventDefault();
+      if (e.touches.length === 2) {
+        const t1 = e.touches[0], t2 = e.touches[1];
+        const dist = Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY);
+        const newZoom = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, pinchZoom0 * (dist / pinchDist0)));
+        const rect  = stage.getBoundingClientRect();
+        const midFX = (t1.clientX + t2.clientX) / 2 - rect.left - rect.width  / 2;
+        const midFY = (t1.clientY + t2.clientY) / 2 - rect.top  - rect.height / 2;
+        const ratio = newZoom / pinchZoom0;
+        // Zoom around pinch midpoint, then follow midpoint movement
+        panX = pinchFX - (pinchFX - pinchPanX0) * ratio + (midFX - pinchFX);
+        panY = pinchFY - (pinchFY - pinchPanY0) * ratio + (midFY - pinchFY);
+        zoomLevel = newZoom;
+        clampPan();
+        applyTransform();
+        updateZoomUI();
+      } else if (e.touches.length === 1 && touchPanning) {
+        panX = tPanX0 + (e.touches[0].clientX - tDragX0);
+        panY = tPanY0 + (e.touches[0].clientY - tDragY0);
+        clampPan();
+        applyTransform();
+      }
+    }, { passive: false });
+
+    stage.addEventListener('touchend', e => {
+      if (e.touches.length < 2) {
+        // Transition from pinch to single-finger pan
+        if (e.touches.length === 1 && zoomLevel > 1) {
+          touchPanning = true;
+          tDragX0 = e.touches[0].clientX; tDragY0 = e.touches[0].clientY;
+          tPanX0  = panX; tPanY0 = panY;
+        } else {
+          touchPanning = false;
+        }
+        // Quality re-render after pinch ends
+        clearTimeout(renderTimer);
+        renderTimer = setTimeout(() => {
+          if (Math.abs(zoomLevel - renderedZoom) > 0.05) lbRenderPage(curPage);
+        }, 400);
+      }
+    }, { passive: false });
   }
 
   /* ---- Render page thumbnail strip ---- */
@@ -323,6 +532,8 @@ const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
   }
 
   /* ---- Render a page into the lightbox canvas ---- */
+  // Renders at baseScale * min(zoomLevel, 4) for memory safety. CSS transform
+  // handles any visual zoom delta between renders.
   async function lbRenderPage(n) {
     if (lbRendering || !pdfDoc) return;
     lbRendering = true;
@@ -332,18 +543,24 @@ const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
     loader?.classList.remove('hidden');
 
     try {
-      const page = await pdfDoc.getPage(n);
-      const dpr  = window.devicePixelRatio || 1;
-      const maxW = Math.min(qs('#lb-stage')?.clientWidth || 860, window.innerWidth - 80);
-      const maxH = Math.min(window.innerHeight * 0.65, 580);
-      const vp0  = page.getViewport({ scale: 1 });
-      const scale = Math.min(maxW / vp0.width, maxH / vp0.height) * dpr;
-      const vp    = page.getViewport({ scale });
+      const page   = await pdfDoc.getPage(n);
+      const dpr    = window.devicePixelRatio || 1;
+      const stage  = qs('#lb-stage');
+      const stageW = stage ? stage.clientWidth  : window.innerWidth;
+      const stageH = stage ? stage.clientHeight : window.innerHeight * 0.80;
+      const vp0    = page.getViewport({ scale: 1 });
+
+      baseScale = Math.min(stageW / vp0.width, stageH / vp0.height);
+      const rz    = Math.min(zoomLevel, 4); // cap render zoom at 4× (memory)
+      const vp    = page.getViewport({ scale: baseScale * rz * dpr });
 
       canvas.width  = vp.width;
       canvas.height = vp.height;
-      canvas.style.width  = (vp.width  / dpr) + 'px';
+      canvas.style.width  = (vp.width  / dpr) + 'px'; // = pageW * baseScale * rz
       canvas.style.height = (vp.height / dpr) + 'px';
+
+      renderedZoom = rz;
+      applyTransform(); // sync pan + visual-scale immediately
 
       await page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise;
       if (counter) counter.textContent = `Sheet ${n} of ${totalPages}`;
@@ -356,6 +573,14 @@ const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
   }
 
   function lbGoTo(n) {
+    // Always reset zoom when flipping pages
+    clearTimeout(renderTimer);
+    zoomLevel = 1; panX = 0; panY = 0;
+    const canvas = qs('#lb-canvas');
+    if (canvas) canvas.style.transform = '';
+    syncStageCursor();
+    updateZoomUI();
+
     curPage = Math.max(1, Math.min(n, totalPages));
     lbRenderPage(curPage);
     updateThumbActive(curPage);
@@ -365,9 +590,12 @@ const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
   async function openLightbox(item) {
     const pdfPath = item.dataset.pdf;
     const title   = item.dataset.title || qs('.portfolio-item__title', item)?.textContent || '';
-    curPage     = 1;
-    pdfDoc      = null;
-    lbRendering = false;
+    curPage      = 1;
+    pdfDoc       = null;
+    lbRendering  = false;
+    zoomLevel    = 1;
+    renderedZoom = 1;
+    panX = 0; panY = 0;
 
     buildUI(title);
     lightbox.hidden = false;
@@ -377,7 +605,6 @@ const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
       if (typeof pdfjsLib === 'undefined') throw new Error('pdf.js not loaded');
       pdfDoc      = await pdfjsLib.getDocument(pdfPath).promise;
       totalPages  = pdfDoc.numPages;
-      // Update counter placeholder before first render
       const counter = qs('#lb-counter');
       if (counter) counter.textContent = `Sheet 1 of ${totalPages}`;
     } catch (e) {
@@ -389,6 +616,7 @@ const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
   }
 
   function closeLightbox() {
+    clearTimeout(renderTimer);
     lightbox.hidden = true;
     document.body.style.overflow = '';
     pdfDoc = null;
@@ -406,9 +634,12 @@ const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
   document.addEventListener('keydown', e => {
     if (lightbox.hidden) return;
-    if (e.key === 'Escape')                              closeLightbox();
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') lbGoTo(curPage + 1);
-    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   lbGoTo(curPage - 1);
+    if (e.key === 'Escape')                               closeLightbox();
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown')  lbGoTo(curPage + 1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')    lbGoTo(curPage - 1);
+    if (e.key === '+' || e.key === '=')                   applyZoom(zoomLevel * 1.25);
+    if (e.key === '-' || e.key === '_')                   applyZoom(zoomLevel / 1.25);
+    if (e.key === '0')                                    resetZoom();
   });
 })();
 
@@ -549,10 +780,11 @@ const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
   if (!form) return;
 
   const rules = {
-    name:    { required: true, minLength: 2,  message: 'Please enter your full name.' },
-    email:   { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Please enter a valid email address.' },
-    service: { required: true, message: 'Please select a service.' },
-    message: { required: true, minLength: 10, message: 'Please describe your project (min. 10 characters).' },
+    name:               { required: true, minLength: 2,  message: 'Please enter your full name.' },
+    email:              { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Please enter a valid email address.' },
+    service:            { required: true, message: 'Please select a service.' },
+    'property-address': { required: true, minLength: 5,  message: 'Please enter the property address.' },
+    message:            { required: true, minLength: 10, message: 'Please describe your project (min. 10 characters).' },
   };
 
   function getError(field, value) {
@@ -580,7 +812,7 @@ const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
   }
 
   // Live validation on blur
-  ['name', 'email', 'service', 'message'].forEach(id => {
+  ['name', 'email', 'service', 'property-address', 'message'].forEach(id => {
     const input = qs(`#${id}`);
     input?.addEventListener('blur', () => validateField(id));
     input?.addEventListener('input', () => {
@@ -592,7 +824,7 @@ const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
     e.preventDefault();
 
     // Validate all fields
-    const valid = ['name', 'email', 'service', 'message'].every(validateField);
+    const valid = ['name', 'email', 'service', 'property-address', 'message'].every(validateField);
     if (!valid) return;
 
     // Loading state
