@@ -95,7 +95,12 @@ Submitted : {$timestamp}
 IP        : {$ip}
 TEXT;
 
-$subject = ($rush === 'Yes' ? '[RUSH] ' : '') . "New Project Request from {$name} — Red Bridge Design";
+// Address may contain HTML-encoded entities from clean() — decode for the subject line
+$subject_address = html_entity_decode($property_address, ENT_QUOTES, 'UTF-8');
+// Strip newlines defensively (header injection)
+$subject_address = preg_replace('/[\r\n]+/', ' ', $subject_address);
+$subject = ($rush === 'Yes' ? '[RUSH] ' : '')
+         . "New Project Request from {$name} — {$subject_address}";
 
 $headers  = "From: " . FROM_NAME . " <" . FROM_EMAIL . ">\r\n";
 $headers .= "Reply-To: {$name} <{$email}>\r\n";
